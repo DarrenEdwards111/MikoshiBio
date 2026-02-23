@@ -7,8 +7,7 @@ from typing import List, Dict, Any, Optional, Tuple
 import io
 import requests
 from Bio.PDB import PDBParser, PDBIO, Select, NeighborSearch
-from Bio.PDB.DSSP import DSSP
-from Bio.PDB.Polypeptide import PPBuilder, three_to_one
+from Bio.PDB.Polypeptide import PPBuilder
 from Bio.Seq import Seq
 from Bio.SeqUtils import molecular_weight
 import numpy as np
