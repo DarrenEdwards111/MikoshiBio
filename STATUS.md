@@ -57,6 +57,7 @@ pip install -e ".[all]"
 ```bash
 # Run basic tests
 pytest tests/test_pdb_pack.py -v
+# ✅ 5/5 tests passing (100%)
 
 # Test example script
 python examples/autism_epigenetics_proteins.py
