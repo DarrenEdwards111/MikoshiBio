@@ -21,20 +21,12 @@ class PDBPack:
             search_query = {
                 "query": {
                     "type": "terminal",
-                    "service": "text",
+                    "service": "full_text",
                     "parameters": {
                         "value": query
                     }
                 },
-                "return_type": "entry",
-                "request_options": {
-                    "results_content_type": ["experimental"],
-                    "return_all_hits": False,
-                    "pager": {
-                        "start": 0,
-                        "rows": limit
-                    }
-                }
+                "return_type": "entry"
             }
             
             response = requests.post(
@@ -46,7 +38,8 @@ class PDBPack:
             data = response.json()
             
             results = []
-            for item in data.get("result_set", []):
+            result_set = data.get("result_set", [])[:limit]  # Apply limit here
+            for item in result_set:
                 pdb_id = item.get("identifier", "")
                 
                 # Get basic metadata
