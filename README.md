@@ -9,9 +9,10 @@
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-8%20passed-brightgreen)]()
 
-**Molecular Modeling Extension for MikoshiLang**
+**Molecular Modeling for Python & MikoshiLang**
 
-Adds protein structure analysis, molecular dynamics trajectory analysis, and molecular docking capabilities to MikoshiLang.
+Protein structure analysis, molecular dynamics, and docking tools.
+Use as a pure Python library or with MikoshiLang's symbolic/Wolfram-style syntax.
 
 ## Features
 
@@ -52,8 +53,11 @@ Adds protein structure analysis, molecular dynamics trajectory analysis, and mol
 ## Installation
 
 ```bash
-# Basic installation
+# Python API only (BioPython + NumPy)
 pip install mikoshi-bio
+
+# With MikoshiLang symbolic/Wolfram-style syntax
+pip install mikoshi-bio[symbolic]
 
 # With molecular dynamics support
 pip install mikoshi-bio[md]
@@ -70,30 +74,10 @@ pip install mikoshi-bio[all]
 
 ## Quick Start
 
-### Query PDB Database
+### Python API (No MikoshiLang Required)
 
 ```python
-from mikoshilang import parse_and_eval
-import mikoshibio  # Loads PDB pack + structure functions
-
-# Search for structures
-parse_and_eval('PackSearch["pdb", "hemoglobin"]')
-# → [{"id": "1A3N", "label": "Crystal Structure of Human Hemoglobin", ...}]
-
-# Get structure metadata
-parse_and_eval('PackValue["pdb", "1CRN", "Resolution"]')
-# → {"value": 1.5, "entity": "1CRN", ...}
-
-# Download structure
-parse_and_eval('PackValue["pdb", "1CRN", "PDBFile"]')
-# → {"value": "https://files.rcsb.org/download/1CRN.pdb", ...}
-```
-
-### Load and Analyze Structures
-
-```python
-from mikoshilang import Expr
-from mikoshibio import LoadPDB, GetSequence, FindContacts, CalculateRMSD
+from mikoshibio import LoadPDB, GetSequence, FindContacts, SequenceAnalysis
 
 # Load structure from PDB
 structure = LoadPDB("pdb", "1CRN")
@@ -107,10 +91,29 @@ contacts = FindContacts(structure, distance=5.0)
 print(f"Found {len(contacts)} contacts")
 
 # Analyze sequence properties
-from mikoshibio import SequenceAnalysis
 props = SequenceAnalysis(seq)
 print(f"MW: {props['molecular_weight']:.2f} Da")
 print(f"pI: {props['isoelectric_point']:.2f}")
+```
+
+### Query PDB Database
+
+```python
+from mikoshibio import PDBPack
+
+pdb = PDBPack()
+
+# Search for structures
+results = pdb.search("hemoglobin", limit=5)
+# → [{"id": "1A3N", "label": "Crystal Structure of Human Hemoglobin", ...}]
+
+# Get structure metadata
+resolution = pdb.get_value("1CRN", "Resolution")
+print(f"Resolution: {resolution['value']} Å")
+
+# Get PDB file URL
+pdb_url = pdb.get_value("1CRN", "PDBFile")
+# → "https://files.rcsb.org/download/1CRN.pdb"
 ```
 
 ### Compare Structures
@@ -136,13 +139,18 @@ binding_residues = GetBindingSites(structure, "ATP", distance=4.0)
 print(f"Binding site residues: {binding_residues}")
 ```
 
-## Usage with MikoshiLang Syntax
+## Optional: MikoshiLang Symbolic Syntax
 
-MikoshiBio integrates seamlessly with MikoshiLang's Wolfram-style syntax:
+Install with `pip install mikoshi-bio[symbolic]` for Wolfram-style symbolic computation:
 
 ```python
 from mikoshilang import parse_and_eval
-import mikoshibio
+import mikoshibio  # Registers structure rules
+
+# Check if symbolic features are available
+from mikoshibio import MIKOSHILANG_AVAILABLE
+if not MIKOSHILANG_AVAILABLE:
+    print("Install mikoshi-bio[symbolic] for MikoshiLang integration")
 
 # Load structure
 result = parse_and_eval('LoadPDB["pdb", "1CRN"]')

@@ -1,7 +1,15 @@
 """
-MikoshiBio - Molecular Modeling Extension for MikoshiLang
+MikoshiBio - Molecular Modeling Extension
 
-Adds protein structure analysis, molecular dynamics, and docking capabilities.
+Provides Python API for protein structure analysis, molecular dynamics, and docking.
+Optional MikoshiLang integration for symbolic/Wolfram-style syntax.
+
+Install modes:
+  pip install mikoshi-bio              # Python API only
+  pip install mikoshi-bio[symbolic]    # + MikoshiLang integration
+  pip install mikoshi-bio[md]          # + MDAnalysis
+  pip install mikoshi-bio[docking]     # + AutoDock Vina
+  pip install mikoshi-bio[all]         # All features
 """
 
 from .pdb_pack import PDBPack
@@ -14,6 +22,13 @@ from .biopython_bridge import (
     GetBindingSites,
     SequenceAnalysis,
 )
+
+# Check for optional MikoshiLang integration
+try:
+    from .structure_rules import STRUCTURE_RULES, MIKOSHILANG_AVAILABLE
+except ImportError:
+    MIKOSHILANG_AVAILABLE = False
+    STRUCTURE_RULES = []
 
 # MDAnalysis tools (optional - requires mdanalysis)
 try:
@@ -46,7 +61,7 @@ try:
 except ImportError:
     VINA_AVAILABLE = False
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 __all__ = [
     # Knowledge pack
@@ -60,6 +75,11 @@ __all__ = [
     "CalculateSecondaryStructure",
     "GetBindingSites",
     "SequenceAnalysis",
+    
+    # Feature flags
+    "MIKOSHILANG_AVAILABLE",
+    "MDANALYSIS_AVAILABLE",
+    "VINA_AVAILABLE",
 ]
 
 # Add MD functions if available
