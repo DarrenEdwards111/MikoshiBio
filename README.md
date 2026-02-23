@@ -24,11 +24,25 @@ Adds protein structure analysis, molecular dynamics trajectory analysis, and mol
 - Secondary structure analysis (DSSP)
 - Sequence property analysis
 
+### MDAnalysis Integration (v0.2.0) ✨ NEW
+- Load and analyze MD trajectories
+- Calculate RMSD, RMSF, radius of gyration
+- Track contacts and distances over time
+- Extract frames and align trajectories
+- Support for DCD, XTC, TRR formats
+
+### Molecular Docking (v0.2.0) ✨ NEW
+- AutoDock Vina integration
+- Protein-ligand docking
+- Binding affinity calculation
+- Virtual screening
+- Automatic docking box calculation
+- PDB to PDBQT conversion
+
 ### Planned Features
-- MDAnalysis trajectory analysis
-- AutoDock Vina molecular docking
-- Py3Dmol/NGLView visualization
-- RDKit molecular descriptors
+- Py3Dmol/NGLView visualization (v0.3.0)
+- RDKit molecular descriptors (v0.4.0)
+- Advanced trajectory analysis (v0.5.0)
 
 ## Installation
 
