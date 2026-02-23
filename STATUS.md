@@ -198,7 +198,7 @@ MikoshiBio is designed as an **optional extension** to MikoshiLang:
 3. ✅ Run comprehensive tests (8/17 passing)
 4. ✅ Add MDAnalysis support (v0.2.0)
 5. ✅ Add AutoDock Vina support (v0.2.0)
-6. ⏳ Publish to PyPI (v0.2.0)
+6. ✅ Publish to PyPI (v0.2.0) - https://pypi.org/project/mikoshi-bio/0.2.0/
 7. ⏳ Announce on MikoshiLang website
 8. ⏳ Add visualization (v0.3.0)
 

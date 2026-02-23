@@ -4,11 +4,6 @@
   <img src="mikoshibio-logo.jpg" alt="MikoshiBio" width="400">
 </p>
 
-[![PyPI](https://img.shields.io/pypi/v/mikoshi-bio)](https://pypi.org/project/mikoshi-bio/)
-[![Python](https://img.shields.io/badge/python-3.9%2B-blue)]()
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-8%20passed-brightgreen)]()
-
 **Molecular Modeling Extension for MikoshiLang**
 
 Adds protein structure analysis, molecular dynamics trajectory analysis, and molecular docking capabilities to MikoshiLang.

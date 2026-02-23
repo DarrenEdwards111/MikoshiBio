@@ -1,13 +1,48 @@
+Metadata-Version: 2.4
+Name: mikoshi-bio
+Version: 0.2.0
+Summary: Molecular modeling extension for MikoshiLang — protein structures, MD analysis, and docking
+Author-email: Mikoshi Ltd <mikoshiuk@gmail.com>
+License: Apache-2.0
+Project-URL: Homepage, https://mikoshi.co.uk/mikoshilang
+Project-URL: Repository, https://github.com/DarrenEdwards111/MikoshiBio
+Project-URL: Documentation, https://github.com/DarrenEdwards111/MikoshiBio#readme
+Keywords: molecular-modeling,bioinformatics,protein-structure,molecular-dynamics,docking
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Topic :: Scientific/Engineering :: Chemistry
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: mikoshilang>=3.5.0
+Requires-Dist: biopython>=1.80
+Requires-Dist: requests>=2.28
+Requires-Dist: numpy>=1.21
+Provides-Extra: md
+Requires-Dist: MDAnalysis>=2.0; extra == "md"
+Requires-Dist: mdtraj>=1.9; extra == "md"
+Provides-Extra: docking
+Requires-Dist: vina>=1.2; extra == "docking"
+Provides-Extra: visualization
+Requires-Dist: py3Dmol>=2.0; extra == "visualization"
+Requires-Dist: nglview>=3.0; extra == "visualization"
+Provides-Extra: rdkit
+Requires-Dist: rdkit>=2022.9; extra == "rdkit"
+Provides-Extra: all
+Requires-Dist: MDAnalysis>=2.0; extra == "all"
+Requires-Dist: mdtraj>=1.9; extra == "all"
+Requires-Dist: vina>=1.2; extra == "all"
+Requires-Dist: py3Dmol>=2.0; extra == "all"
+Requires-Dist: nglview>=3.0; extra == "all"
+Requires-Dist: rdkit>=2022.9; extra == "all"
+
 # MikoshiBio
 
 <p align="center">
   <img src="mikoshibio-logo.jpg" alt="MikoshiBio" width="400">
 </p>
-
-[![PyPI](https://img.shields.io/pypi/v/mikoshi-bio)](https://pypi.org/project/mikoshi-bio/)
-[![Python](https://img.shields.io/badge/python-3.9%2B-blue)]()
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-8%20passed-brightgreen)]()
 
 **Molecular Modeling Extension for MikoshiLang**
 

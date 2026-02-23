@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mikoshi-bio"
+version = "0.2.0"
+description = "Molecular modeling extension for MikoshiLang — protein structures, MD analysis, and docking"
+authors = [{name = "Mikoshi Ltd", email = "mikoshiuk@gmail.com"}]
+license = {text = "Apache-2.0"}
+requires-python = ">=3.9"
+readme = "README.md"
+keywords = ["molecular-modeling", "bioinformatics", "protein-structure", "molecular-dynamics", "docking"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Chemistry",
+]
+dependencies = [
+    "mikoshilang>=3.5.0",
+    "biopython>=1.80",
+    "requests>=2.28",
+    "numpy>=1.21",
+]
+
+[project.optional-dependencies]
+md = ["MDAnalysis>=2.0", "mdtraj>=1.9"]
+docking = ["vina>=1.2"]  # AutoDock Vina Python bindings
+visualization = ["py3Dmol>=2.0", "nglview>=3.0"]
+rdkit = ["rdkit>=2022.9"]
+all = ["MDAnalysis>=2.0", "mdtraj>=1.9", "vina>=1.2", "py3Dmol>=2.0", "nglview>=3.0", "rdkit>=2022.9"]
+
+[project.urls]
+Homepage = "https://mikoshi.co.uk/mikoshilang"
+Repository = "https://github.com/DarrenEdwards111/MikoshiBio"
+Documentation = "https://github.com/DarrenEdwards111/MikoshiBio#readme"
+
+[tool.setuptools]
+packages = ["mikoshibio"]
