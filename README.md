@@ -1,5 +1,9 @@
 # MikoshiBio
 
+<p align="center">
+  <img src="mikoshibio-logo.jpg" alt="MikoshiBio" width="400">
+</p>
+
 **Molecular Modeling Extension for MikoshiLang**
 
 Adds protein structure analysis, molecular dynamics trajectory analysis, and molecular docking capabilities to MikoshiLang.
